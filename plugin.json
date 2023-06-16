@@ -1,16 +1,17 @@
 {
-    "id": "your-plugin-id",
-    "version": "0.1.0",
+    "id": "xgb-bump-tmp",
+    "version": "1.0.0",
     "meta": {
-        "label": "Plugin template - Replace by your plugin label",
-        "category": "Your category (optional)",
-        "description": "Your description (keep it short and simple)",
-        "author": "Organization (firstName LASTNAME)",
-        "icon": "icon-font-awesome-3.2.1",
+        "label": "XGBoost version bump",
+        "category": "Machine Learning",
+        "description": "Bump XGBoost model files for models trained on an older version",
+        "author": "Dataiku (Mehdi Hamoumi)",
+        "icon": "icon-gear",
         "licenseInfo": "Apache Software License",
-        "url": "https://www.dataiku.com/product/plugins/your-plugin-id/",
+        "url": "https://github.com/dataiku/dss-plugin-xgboost-version-bump",
         "tags": [
-            "myTag"
+            "Machine Learning",
+            "XGBoost"
         ],
         "supportLevel": "NOT_SUPPORTED"
     }

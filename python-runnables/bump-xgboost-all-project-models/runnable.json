@@ -1,0 +1,14 @@
+{
+	"meta": {
+	    "label": "Bump XGBoost model files in Project",
+	    "description": "Bump XGBoost model files for models trained on an older version, in a Project. Will bump both Analysis models and Saved Models.",
+	    "icon": "icon-gear"
+	},
+
+	"impersonate": true,
+
+	"permissions": ["WRITE_CONF"],
+
+	"resultType": "RESULT_TABLE",
+	"resultLabel": "Bumped XGBoost models"
+}
