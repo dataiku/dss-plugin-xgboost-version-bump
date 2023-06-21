@@ -1,5 +1,5 @@
 {
-    "id": "xgb-bump-tmp",
+    "id": "xgboost-version-bump",
     "version": "1.0.0",
     "meta": {
         "label": "XGBoost version bump",
