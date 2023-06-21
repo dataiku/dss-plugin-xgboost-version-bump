@@ -4,7 +4,11 @@ from glob import glob
 import logging
 import os
 
-from dataiku.doctor.utils import model_io
+try:
+    from dataiku.doctor.utils import model_io
+except Exception as e:
+    # TODO 12.2 or higher ?
+    raise ImportError("Failed to import dataiku.doctor.utils.model_io. Check that your DSS version is higher than 12.2", e.message)
 
 
 XGB_PREDICTION_TYPES = ["XGBOOST_CLASSIFICATION", "XGBOOST_REGRESSION"]
