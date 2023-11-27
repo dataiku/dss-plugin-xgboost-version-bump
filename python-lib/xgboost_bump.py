@@ -10,6 +10,11 @@ except Exception as e:
     # TODO 12.2 or higher ?
     raise ImportError("Failed to import dataiku.doctor.utils.model_io. Check that your DSS version is higher than 12.2", e.message)
 
+try:
+    from dataiku.base.folder_context import build_folder_context
+except Exception as e:
+    raise ImportError("Failed to import dataiku.base.folder_context.build_folder_context. Check that your DSS version is higher than 12.3", e.message)
+
 
 XGB_PREDICTION_TYPES = ["XGBOOST_CLASSIFICATION", "XGBOOST_REGRESSION"]
 
@@ -96,8 +101,9 @@ def _bump_xgboost_model(model_folder):
     """
     logging.info("Bumping XGBoost model in: %s", model_folder)
     try:
-        clf = model_io.load_model_from_folder(model_folder)
-        model_io.dump_model_to_folder(model_folder, clf)
+        folder_context = build_folder_context(model_folder)
+        clf = model_io.load_model_from_folder(folder_context)
+        model_io.dump_model_to_folder(folder_context, clf)
     except:
         logging.warn("Failed to bump XGBoost model: ", exc_info=True)
         return False
