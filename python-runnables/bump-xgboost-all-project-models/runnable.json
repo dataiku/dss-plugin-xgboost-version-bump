@@ -10,5 +10,5 @@
 	"permissions": ["WRITE_CONF"],
 
 	"resultType": "RESULT_TABLE",
-	"resultLabel": "Bumped XGBoost models"
+	"resultLabel": "XGBoost models bump results"
 }
