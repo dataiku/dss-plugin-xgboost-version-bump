@@ -1,7 +1,7 @@
 {
 	"meta": {
-	    "label": "Bump XGBoost model files in Visual Analysis",
-	    "description": "Bump XGBoost model files for models trained on an older version, in a Visual Analysis",
+	    "label": "Upgrade XGBoost model files in Visual Analysis",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in a Visual Analysis",
 	    "icon": "icon-gear"
 	},
 
@@ -10,7 +10,7 @@
 	"permissions": ["WRITE_CONF"],
 
 	"resultType": "RESULT_TABLE",
-	"resultLabel": "Bumped XGBoost models",
+	"resultLabel": "Upgraded XGBoost models",
 
 	"macroRoles": [
 		{

@@ -1,12 +1,12 @@
 from result_table_utils import create_result_table
-import xgboost_bump
+import xgboost_upgrade
 
 import dataiku
 from dataiku.runnables import ResultTable
 from dataiku.runnables import Runnable
 
 
-class XGBoostInstanceModelsBumper(Runnable):
+class XGBoostInstanceModelsUpgrader(Runnable):
 
     def __init__(self, project_key, config, plugin_config):
         """
@@ -23,9 +23,9 @@ class XGBoostInstanceModelsBumper(Runnable):
         Do stuff here. Can return a string or raise an exception.
         The progress_callback is a function expecting 1 value: current progress
         """
-        bumped_models = [ 
-            bumped_model
+        upgraded_models = [ 
+            upgraded_model
             for project_key in self.project_keys
-            for bumped_model in xgboost_bump.bump_all_analyses_and_saved_models(project_key)
+            for upgraded_model in xgboost_upgrade.upgrade_all_analyses_and_saved_models(project_key)
         ]
-        return create_result_table(bumped_models)
+        return create_result_table(upgraded_models)

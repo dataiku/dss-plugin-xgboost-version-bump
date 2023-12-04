@@ -1,7 +1,7 @@
 {
 	"meta": {
-	    "label": "Bump XGBoost model files in Current Project",
-	    "description": "Bump XGBoost model files for models trained on an older version, in current Project. Will bump both Analysis models and Saved Models.",
+	    "label": "Upgrade XGBoost model files in Current Project",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in current Project. Will upgrade both Analysis models and Saved Models.",
 	    "icon": "icon-gear"
 	},
 
@@ -10,5 +10,5 @@
 	"permissions": ["WRITE_CONF"],
 
 	"resultType": "RESULT_TABLE",
-	"resultLabel": "XGBoost models bump results"
+	"resultLabel": "XGBoost models upgrade results"
 }

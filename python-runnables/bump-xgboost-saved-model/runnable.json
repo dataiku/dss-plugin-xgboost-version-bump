@@ -1,7 +1,7 @@
 {
 	"meta": {
-	    "label": "Bump XGBoost model files in Saved Model",
-	    "description": "Bump XGBoost model files for models trained on an older version, in a Saved Model",
+	    "label": "Upgrade XGBoost model files in Saved Model",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in a Saved Model",
 	    "icon": "icon-gear"
 	},
 
@@ -10,7 +10,7 @@
 	"permissions": ["WRITE_CONF"],
 
 	"resultType": "RESULT_TABLE",
-	"resultLabel": "Bumped XGBoost models",
+	"resultLabel": "Upgraded XGBoost models",
 
 	"macroRoles": [
 		{

@@ -1,6 +1,6 @@
-# XGBoost version bumping plugin
+# XGBoost models upgrade plugin
 
-This Dataiku DSS plugin provides a macro to bump XGBoost models trained with version 0.82 to a format compatible with newer XGBoost versions, including 1.5.2
+This Dataiku DSS plugin provides a macro to upgrade XGBoost models trained with version 0.82 to a format compatible with newer XGBoost versions, including 1.5.2
 
 ## Release notes
 
