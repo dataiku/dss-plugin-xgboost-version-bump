@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+import datetime
 import json
 from glob import glob
 import logging
 import os
+import shutil
 
 try:
     from dataiku.doctor.utils import model_io
@@ -113,30 +115,41 @@ def _possibly_bump_model(rmodeling_params_path, model_origin):
     :return tuple | None: (model_path, model_origin, algorithm, bump_result) tuple if it is an
                           XGBoost model, None otherwise
     """
+    model_folder = os.path.dirname(rmodeling_params_path)
     with open(rmodeling_params_path) as f:
         modeling_params = json.load(f)
         algorithm = modeling_params.get("algorithm")
 
-    if algorithm in XGB_PREDICTION_TYPES:
-        model_folder = os.path.dirname(rmodeling_params_path)
+    if algorithm not in XGB_PREDICTION_TYPES:
+        return None
 
-        # If model has already been bumped, skip
-        xgb_clf_attributes_path = os.path.join(model_folder, XGBOOST_CLF_ATTRIBUTES_FILENAME)
-        xgb_booster_path = os.path.join(model_folder, XGBOOST_BOOSTER_FILENAME)
-        if os.path.exists(xgb_clf_attributes_path) and os.path.exists(xgb_booster_path):
-            logging.warn("Bumped Xgboost files already exist: '%s', '%s'", xgb_booster_path, xgb_clf_attributes_path)
-            return (xgb_clf_attributes_path, model_origin, algorithm, "SKIPPED")
+    # If model has already been bumped, skip
+    xgb_clf_attributes_path = os.path.join(model_folder, XGBOOST_CLF_ATTRIBUTES_FILENAME)
+    xgb_booster_path = os.path.join(model_folder, XGBOOST_BOOSTER_FILENAME)
+    if os.path.exists(xgb_clf_attributes_path) and os.path.exists(xgb_booster_path):
+        logging.warn("Bumped Xgboost files already exist: '%s', '%s'", xgb_booster_path, xgb_clf_attributes_path)
+        return (xgb_clf_attributes_path, model_origin, algorithm, "SKIPPED")
 
-        # Try bumping model from clf.pkl
-        clf_path = os.path.join(model_folder, "clf.pkl")
-        try:
-            folder_context = build_folder_context(model_folder)
-            clf = model_io.load_model_from_folder(folder_context)
-            model_io.dump_model_to_folder(folder_context, clf)
-            logging.info("Successfully bumped XGBoost model: %s", clf_path)
-            return (clf_path, model_origin, algorithm, "SUCCESS")
-        except:
-            logging.warn("Failed to bump XGBoost model: '%s'", clf_path, exc_info=True)
-            return (clf_path, model_origin, algorithm, "FAIL")
+    # Try bumping model from clf.pkl
+    clf_path = os.path.join(model_folder, "clf.pkl")
 
-    return None
+    # Create a backup copy of the clf file in case something goes wrong
+    backup_clf_path = clf_path + ".bak" + str(datetime.datetime.now().strftime("_%Y_%m_%d_%H_%M_%S"))
+    if os.path.exists(clf_path):
+        shutil.copy2(clf_path, backup_clf_path, follow_symlinks=False)
+
+    try:
+        folder_context = build_folder_context(model_folder)
+        clf = model_io.load_model_from_folder(folder_context)
+        model_io.dump_model_to_folder(folder_context, clf)
+        logging.info("Successfully bumped XGBoost model: %s", clf_path)
+        output = (clf_path, model_origin, algorithm, "SUCCESS")
+    except:
+        logging.warn("Failed to bump XGBoost model: '%s'", clf_path, exc_info=True)
+        output = (clf_path, model_origin, algorithm, "FAIL")
+    else:
+        # Cleanup backup copy if we have successfully bumped the files
+        if os.path.exists(backup_clf_path):
+            os.remove(backup_clf_path)
+
+    return output
