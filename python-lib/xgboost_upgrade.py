@@ -141,7 +141,7 @@ def _possibly_upgrade_model(rmodeling_params_path, model_origin):
     try:
         folder_context = build_folder_context(model_folder)
         clf = model_io.load_model_from_folder(folder_context)
-        model_io.dump_model_to_folder(folder_context, clf)
+        model_io.dump_model_to_folder(clf, folder_context)
         logging.info("Successfully upgraded XGBoost model: %s", clf_path)
         output = (clf_path, model_origin, algorithm, "SUCCESS")
     except:
