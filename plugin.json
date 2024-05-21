@@ -2,9 +2,9 @@
     "id": "xgboost-version-bump",
     "version": "1.0.0",
     "meta": {
-        "label": "XGBoost version bump",
+        "label": "XGBoost models upgrade",
         "category": "Machine Learning",
-        "description": "Bump XGBoost model files for models trained on an older version",
+        "description": "Upgrade XGBoost model files for models trained on an older version",
         "author": "Dataiku (Mehdi Hamoumi)",
         "icon": "icon-gear",
         "licenseInfo": "Apache Software License",

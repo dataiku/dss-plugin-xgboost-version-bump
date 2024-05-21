@@ -1,0 +1,14 @@
+{
+	"meta": {
+	    "label": "Upgrade XGBoost model files in All Projects",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in All Projects. Will upgrade both Analysis models and Saved Models.",
+	    "icon": "icon-gear"
+	},
+
+	"impersonate": false,
+	"requiresGlobalAdmin": true,
+
+	"resultType": "RESULT_TABLE",
+	"resultLabel": "XGBoost models upgrade results"
+
+}

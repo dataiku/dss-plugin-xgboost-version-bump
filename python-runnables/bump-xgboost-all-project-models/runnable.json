@@ -1,0 +1,14 @@
+{
+	"meta": {
+	    "label": "Upgrade XGBoost model files in Current Project",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in current Project. Will upgrade both Analysis models and Saved Models.",
+	    "icon": "icon-gear"
+	},
+
+	"impersonate": true,
+
+	"permissions": ["WRITE_CONF"],
+
+	"resultType": "RESULT_TABLE",
+	"resultLabel": "XGBoost models upgrade results"
+}

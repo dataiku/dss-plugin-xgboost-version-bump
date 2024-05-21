@@ -1,0 +1,21 @@
+{
+	"meta": {
+	    "label": "Upgrade XGBoost model files in Saved Model",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in a Saved Model",
+	    "icon": "icon-gear"
+	},
+
+	"impersonate": true,
+
+	"permissions": ["WRITE_CONF"],
+
+	"resultType": "RESULT_TABLE",
+	"resultLabel": "Upgraded XGBoost models",
+
+	"macroRoles": [
+		{
+			"type": "SAVED_MODEL",
+			"targetParamsKey": "saved_model_id"
+		}
+	]
+}

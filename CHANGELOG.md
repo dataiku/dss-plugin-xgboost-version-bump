@@ -1,13 +1,4 @@
 # Changelog
 
-## Version X.Y.Z - Type of release (*) - YYYY-MM-DD
-- Changes 1 ...
-- Changes 2 ... 
-- ...
-
-(*) Possible types of releases
-
-- Initial release
-- Bugfix release
-- Feature release
-- .... 
+## Version 1.0.0 - Initial release - 2021-06
+- Macro to upgrade XGBoost models trained on version 0.82 for compatibility with newer versions

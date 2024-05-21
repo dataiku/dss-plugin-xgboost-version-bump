@@ -1,0 +1,21 @@
+{
+	"meta": {
+	    "label": "Upgrade XGBoost model files in Visual Analysis",
+	    "description": "Upgrade XGBoost model files for models trained on an older version, in a Visual Analysis",
+	    "icon": "icon-gear"
+	},
+
+	"impersonate": true,
+
+	"permissions": ["WRITE_CONF"],
+
+	"resultType": "RESULT_TABLE",
+	"resultLabel": "Upgraded XGBoost models",
+
+	"macroRoles": [
+		{
+			"type": "VISUAL_ANALYSIS",
+			"targetParamsKey": "analysis_id"
+		}
+	]
+}
